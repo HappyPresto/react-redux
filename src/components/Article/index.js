@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import CommentList from '../CommentList'
 import './style.css'
+import {connect} from 'react-redux'
+import {deleteArticle} from '../../AC'
 
 class Article extends Component {
     static propTypes = {
@@ -32,6 +34,7 @@ class Article extends Component {
                 <button onClick = {toggleOpen}>
                     {isOpen ? 'close' : 'open'}
                 </button>
+                <button onClick = {this.handleDelete}>Delete me</button>
                 {this.getBody()}
             </div>
         )
@@ -55,9 +58,14 @@ class Article extends Component {
         )
     }
 
+    handleDelete = () => {
+        const {deleteArticle, article} = this.props
+        deleteArticle(article.id)
+    }
+
     setCommentsRef = ref => {
 //        console.log('---', ref)
     }
 }
 
-export default Article
+export default connect(null, {deleteArticle})(Article)

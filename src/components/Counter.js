@@ -38,6 +38,6 @@ const decorator = connect(mapStateToProps, mapToDispatch)
 
 export default decorator(Counter)*/
 
-export default connect((state) => {
+export default connect((state) => ({
     counter: state.count
-}, {increment})(Counter)
+}), {increment})(Counter)
