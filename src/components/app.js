@@ -6,6 +6,7 @@ import UserForm from './UserForm'
 import Select from 'react-select'
 import Filters from './Filters'
 import 'react-select/dist/react-select.css'
+import Counter from './Counter'
 
 class App extends Component {
     static propTypes = {
@@ -17,6 +18,7 @@ class App extends Component {
 
         return (
             <div>
+                <Counter />
                 <UserForm />
                 <Filters articles = {articles} />
                 <ArticleList articles = {articles} defaultOpenId = {articles[0].id}/>
