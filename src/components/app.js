@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ArticleList from './ArticleList'
-import ArticlesChart from './ArticlesChart'
 import UserForm from './UserForm'
-import Select from 'react-select'
 import Filters from './Filters'
 import 'react-select/dist/react-select.css'
 import Counter from './Counter'
+import {connect} from 'react-redux'
 
 class App extends Component {
     static propTypes = {
@@ -18,11 +17,13 @@ class App extends Component {
             <div>
                 <Counter />
                 <UserForm />
-                <Filters articles = {[]} />
-                <ArticleList />
+                <Filters articles = {[this.props.articles]} />
+                <ArticleList/>
             </div>
         )
     }
 }
 
-export default App
+export default connect((state) => ({
+    articles: state.articles
+}), null)(App)
